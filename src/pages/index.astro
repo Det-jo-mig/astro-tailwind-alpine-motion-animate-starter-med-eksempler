@@ -1,39 +1,55 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Button from '../components/Button.astro';
+import Button from "../components/Button.astro";
 ---
-<MainLayout title="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">
-	<article class="prose" x-data>
-		<h1>Astro, Tailwind, Alpine, Motion One og Animate CSS kombineret i en fin, lille starter:-)</h1>
-		<p>Brug starteren til at komme godt i gang med dine Digital Design projekter</p>
-		<p>Se også:</p>
-		<ul>
-			<li><a href="https://astro.build/" alt="Astro Website" target="_blank">Astro</a></li>
-			<li><a href="https://tailwindcss.com/" alt="Tailwind CSS website" target="_blank">Tailwind</a></li>
-			<li><a href="https://alpinejs.dev/" alt="Alpine JS website" target="_blank">Alpine.js</a></li>
-			<li><a href="https://motion.dev/" alt="Motion One website" target="_blank">Motion One</a></li>
-			<li><a href="https://animate.style/" alt="Animate.CSS website" target="_blank">Animate CSS</a></li>
-		</ul>
-		<p>
-			Start med at clone repo'et fra Github: <a href="https://github.com/stefangrage/astro-tailwind-alpine-motion-animate-starter" alt="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">https://github.com/stefangrage/astro-tailwind-alpine-motion-animate-starter</a>
-		</p>
-		<p>
-			Tilpas derefter indholdet i "pages, layouts, components og assets...
-		</p>
-		<p>
-			Og vigtigst af alt: Lav noget godt:-)
-		</p>
-		<p>
-			Se også <a href="http://motherfuckingwebsite.com/" alt="mf website">dette lille site</a> for lidt inspiration.
-		</p>
-		<div>
-		<Button>Fang mig hvis du kan:-)</Button>
-		</div>
-	</article>
+
+<MainLayout>
+  <section>
+    <h2>Zehra S. Dursun</h2>
+    <article class="w-2/3 bg-[url('/paper.svg')] bg-contain bg-no-repeat p-11">
+      <h3>Om mig</h3>
+      <p class="">
+        Jeg er en arbejdsom og kreativ person, jeg har en tendens til at finde
+        utraditionelle løsninger på forskellige problemstillinger. <br />Jeg har
+        en stærk sans for det visuelle og en god forståelse for min egen smag.
+        Jeg har en god samarbejdsevne er lyttende og giver plads til andres
+        ideer i en samarbejdes proces. Lige nu studerer jeg multimediedesign på
+        KEA ved Guldbergsgade. I min fritid syr jeg kostumer (cosplay) og live
+        streamer her og der for at dele mine interesser med mine venner, om det
+        er videospil, syning eller illustration.
+      </p>
+    </article>
+  </section>
 </MainLayout>
-<style>
-	ul>li:hover{
-		animation: headShake; /* referring directly to the animation's @keyframe declaration */
-  		animation-duration: 1s; /* don't forget to set a duration! */
-	}
-</style>
+
+  <img
+    class="top-10 left-10 absolute w-auto h-auto"
+    src="public/svamp.png"
+    alt="svamp sketch"
+  />
+  <style>
+	.front-face, .back-face{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ebf8f9;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  box-shadow: 0 2px 3px rgba(0,0,0,.2);
+  transition: transform .4s linear;
+}
+.back-face{
+  transform: perspective(800px) rotateY(-180deg);
+}
+.front-face{
+  transform: perspective(800px) rotateY(0deg);
+}
+.container:hover > .back-face{
+  transform: perspective(800px) rotateY(0deg);
+}
+.container:hover > .front-face{
+  transform: perspective(800px) rotateY(180deg);
+}
+
+  </style>
+</section>
