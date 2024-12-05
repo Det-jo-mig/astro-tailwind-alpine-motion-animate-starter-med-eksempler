@@ -1,5 +1,40 @@
 ---
+import Button from '../components/Button.astro';
 ---
-<div class="pb-6 border-b-2 prose">
-En lille note om
-</div>
+<div x-data="{ showmenu: false }" class="p-4 fixed lg:w-36 lg:h-screen w-full bg-red z-50" >
+    <div id="navbar" class="flex flex-col justify-between">
+    <div id="logo" class="">
+    <a href="/" class="">
+        <img src="/public/logo.webp" alt="" class="w-14 right-3 absolute">
+    </a>
+    </div>
+    <nav id="desktopmenu" class="content-center pt-4 hidden lg:block" 
+    x-show="showmenu" x-transition x-on:click="showmenu = false" x-on:click.outside="showmenu = false">
+    <ul class="flex flex-col gap-4">
+        <li class="text-center py-2 border-y-2"><a href="/">Home</a></li>
+        <li class="text-center py-2 border-b-2"><a href="#link2">Services</a></li>
+        <li class="text-center py-2 border-b-2"><a href="/membership">Memberships</a></li>
+        <li class="text-center py-2 border-b-2"><a href="/calender">Calender</a></li>
+        <li class="text-center py-2 border-b-2"><a href="#link4">Job exchange</a></li>
+        <li class="text-center py-2 border-b-2"><a href="#link4">Danish Design Awards</a></li>
+        <li class="text-center py-2 border-b-2"><a href="#link4">About us</a></li>
+    </ul>
+    </nav>
+    <button id="burgermenu" class=" h-8 w-12 flex flex-col justify-between" x-on:click="showmenu = ! showmenu">
+        <span class="bg-white h-2 w-full block"></span>
+        <span class="bg-white h-2 w-full block"></span>
+        <span class="bg-white h-2 w-full block"></span></button>
+    </div>
+    <nav id="mobilmenu" class="flex flex-col content-center pt-4 lg:hidden h-screen" 
+    x-show="showmenu" x-transition x-on:click="showmenu = false" x-on:click.outside="showmenu = false">
+    <ul >
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="/">Home</a></li>
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="#link2">Services</a></li>
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="/membership">Memberships</a></li>
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="/calender">Calender</a></li>
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="#link4">Job exchange</a></li>
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="#link4">Danish Design Awards</a></li>
+    <li class="py-2 px-10 text-white text-left font-extrabold"><a href="#link4">About us</a></li>
+    </ul>
+    </nav>
+    </div>

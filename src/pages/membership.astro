@@ -1,0 +1,46 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Memberbox from '../components/Memberbox.astro';
+const member = await Astro.glob("./memberships/*.md");
+
+---
+<MainLayout title="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">
+<section>
+    <h2 class="mx-5 text-xl text-black font-bold">Memberships</h2>
+    <p class="mx-5 text-sm">
+        As a member of design denmark you get; 
+        <br> Peer-to-peer advisory service: Get access to Denmark’s best peer-to-peer advisory service with experienced designers covering all sorts of legal matters related to design work.
+
+        <br> Legal help: We collaborate with and offer discounts for legal help from the best lawyers in the field of IP legislation.
+        
+        <br> Contract templates: As a member you also get access to specialized contract templates designed to suit the needs of the design industry. 
+        oin our networks, talks, webinars, and more completely free of charge and get massive discounts on masterclasses, conferences, festivals.
+      </p>
+      <section class="mb-16 p-4 pt-10 relative ">
+        <ul id="wrapper" class="flex flex-col gap-5">
+          {
+            member.map((post) => (
+              <li id="slide" class="max-w-sm snap-center">
+                <div class="flex flex-row justify-items-center text-center bg-[url('/public/txtbox.svg')] bg-contain bg-no-repeat mt-2 p-10">
+                  <div class="text-left overflow-hidden text-ellipsis">
+                    <h3 class="text-base font-bold">
+                      <a class href={post.url} class="">
+                        {post.frontmatter.title}
+                      </a>
+                    </h3>
+                    <p class="text-sm "> {post.frontmatter.kortversion}</p>
+                    <a href={post.url} class="">
+                      <div class="m-5">
+                        {" "}
+                      </div>
+                    </a>
+                    <span class="text-sm font-semibold">{post.frontmatter.pris}</span>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+    </section>
+</section>
+</MainLayout>

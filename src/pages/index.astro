@@ -1,39 +1,63 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from '../components/Button.astro';
+const news = await Astro.glob("./news/*.md");
+const sorteredenews = news.sort((a, b) => Date.parse(b.frontmatter.dato) - Date.parse(a.frontmatter.dato));
+const udvalgtenews = sorteredenews.slice(0, 6);
+
 ---
 <MainLayout title="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">
-	<article class="prose" x-data>
-		<h1>Astro, Tailwind, Alpine, Motion One og Animate CSS kombineret i en fin, lille starter:-)</h1>
-		<p>Brug starteren til at komme godt i gang med dine Digital Design projekter</p>
-		<p>Se også:</p>
-		<ul>
-			<li><a href="https://astro.build/" alt="Astro Website" target="_blank">Astro</a></li>
-			<li><a href="https://tailwindcss.com/" alt="Tailwind CSS website" target="_blank">Tailwind</a></li>
-			<li><a href="https://alpinejs.dev/" alt="Alpine JS website" target="_blank">Alpine.js</a></li>
-			<li><a href="https://motion.dev/" alt="Motion One website" target="_blank">Motion One</a></li>
-			<li><a href="https://animate.style/" alt="Animate.CSS website" target="_blank">Animate CSS</a></li>
-		</ul>
-		<p>
-			Start med at clone repo'et fra Github: <a href="https://github.com/stefangrage/astro-tailwind-alpine-motion-animate-starter" alt="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">https://github.com/stefangrage/astro-tailwind-alpine-motion-animate-starter</a>
-		</p>
-		<p>
-			Tilpas derefter indholdet i "pages, layouts, components og assets...
-		</p>
-		<p>
-			Og vigtigst af alt: Lav noget godt:-)
-		</p>
-		<p>
-			Se også <a href="http://motherfuckingwebsite.com/" alt="mf website">dette lille site</a> for lidt inspiration.
-		</p>
-		<div>
-		<Button>Fang mig hvis du kan:-)</Button>
+	<article class=" bg-[url('/public/bg.gif')] bg-center h-screen relative" x-data>
+		<div class="mx-5">
+		<h1 class="text-4xl text-white font-black"> Design denmark</h1>
+		<h2 class="text-xl text-white font-semibold">The Association of Design Professionals since 1946</h2>
+		<p class="text-base text-white absolute bottom-20">We build tools, shape new knowledge and foster relations between designers and the rest of the world. </p>
 		</div>
 	</article>
+	<article>
+		<div class="bg-[url('/public/txtboxtop.svg')] bg-contain bg-no-repeat m-2 pt-10 relative">
+			<p class="text-base px-10 ">Design denmark is a non-profit organization utilizing all our  resources to improve the conditions for designers in Denmark and helping to create Danish design impact worldwide.
+				We consider ourselves both your sparring partner for projects and ideas and your megaphone helping to make your voice heard. 
+				Design denmark utilize all our  resources to improve the conditions for designers in Denmark and helping to create Danish design impact worldwide. 
+				We showcase the craft, stories and products of our members because we believe that Danish design has an important role to play – leading the way to new, sustainable, ethical futures. 
+			</p>
+			<div class="bg-[url('/public/txtboxbottom.svg')] bg-contain bg-no-repeat w-full h-2/4 absolute -bottom-10">
+		</div>
+		</div>
+	</article>
+	<section class="mb-16 p-4 pt-10 relative">
+		<ul id="wrapper" class="flex flex-col h-72 overflow-auto gap-5">
+		  {
+			udvalgtenews.map((post) => (
+			  <li id="slide" class="max-w-sm snap-center">
+				<div class="flex flex-row justify-items-center text-center text-rod-600 bg-brown/50 mt-2 p-2 h-40">
+				  <div class="bg-[url('/public/frame.svg')] bg-contain bg-no-repeat">
+					<img src={post.frontmatter.coverimage} alt={post.frontmatter.coveralt} class="h-28 w-28 my-5"/>
+				  </div>
+				  <div class="text-left overflow-hidden text-ellipsis">
+					<h3 class="text-base font-bold">
+					  <a class href={post.url} class="">
+						{post.frontmatter.title}
+					  </a>
+					</h3>
+					<span class="text-sm font-semibold">{post.frontmatter.dato}</span>
+					<p class="text-sm "> {post.frontmatter.kortversion}</p>
+					<a href={post.url} class="">
+					  <div class="m-5">
+						{" "}
+						<Button>LÆS MERE</Button>
+					  </div>
+					</a>
+				  </div>
+				</div>
+			  </li>
+			))
+		  }
+		</ul>
+	</section>
+<!-- 	News
+
+	calender
+
+	services -->
 </MainLayout>
-<style>
-	ul>li:hover{
-		animation: headShake; /* referring directly to the animation's @keyframe declaration */
-  		animation-duration: 1s; /* don't forget to set a duration! */
-	}
-</style>

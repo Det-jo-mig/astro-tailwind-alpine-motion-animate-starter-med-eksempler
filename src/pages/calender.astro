@@ -1,0 +1,69 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Button from "../components/Button.astro";
+---
+
+<MainLayout>
+  <h2 class="mx-5 text-xl text-black font-bold">Calendar</h2>
+  <p class="mx-5 text-base">
+    Our Design Calendar is your one-stop guide to all the activities and events
+    happening in the field of design and design-related topics in Denmark.
+  </p>
+  <div class="grid grid-cols-1 text-left">
+    <template>
+      <article
+        class="calendar grid grid-cols-3 justify-items-center text-left bg-brown/50 my-5 mx-2 p-2 overflow-hidden"
+      >
+          <img class="h-28 w-28 my-5 ol-span-1 row-span-3" src="" alt="" />
+        <h3 class="text-base font-bold col-start-2 col-span-2 truncate">titel</h3>
+        <h4 class="text-sm font-semibold col-start-2 col-span-2">location</h4>
+        <p
+          class="text-sm overflow-hidden text-ellipsis col-start-2 col-span-2 h-20"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
+          recusandae explicabo fugit nemo quaerat optio pariatur ullam iure
+          nobis.
+        </p>
+        <p class="date text-sm font-semibold col-start-2"></p>
+        <p class="time text-sm font-semibold col-start-3"></p>
+      </article>
+    </template>
+  </div>
+</MainLayout>
+<!-- https://bfzdiuwmmagsqlmwmuix.supabase.co 
+ APIkey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmemRpdXdtbWFnc3FsbXdtdWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNzEzNzQsImV4cCI6MjA0ODc0NzM3NH0.gtj_8Shvijp7fYyuWNk9sueJ6L-mDitdCK5xcOCSd-0 
+ -->
+<script>
+  fetch(
+    "https://bfzdiuwmmagsqlmwmuix.supabase.co/rest/v1/calendar?order=date.asc",
+    {
+      method: "GET",
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmemRpdXdtbWFnc3FsbXdtdWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNzEzNzQsImV4cCI6MjA0ODc0NzM3NH0.gtj_8Shvijp7fYyuWNk9sueJ6L-mDitdCK5xcOCSd-0",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then(showDatas);
+
+  function showDatas(calendars) {
+    calendars.forEach(showData);
+  }
+  function showData(calendar) {
+    const template = document.querySelector("template").content;
+    const copy = template.cloneNode(true);
+
+    copy.querySelector("h3").textContent = calendar.titel;
+    copy.querySelector("h4").textContent = calendar.location;
+    copy.querySelector("p").textContent = calendar.description;
+    copy.querySelector("img").src = calendar.image;
+    copy.querySelector(".date").textContent = calendar.date;
+    copy.querySelector(".time").textContent = calendar.time;
+    if(calendar.free){
+        copy.querySelector("article").classList.add("freeEvent");
+    }
+    const parent = document.querySelector(".grid");
+    parent.appendChild(copy);
+  }
+</script>
