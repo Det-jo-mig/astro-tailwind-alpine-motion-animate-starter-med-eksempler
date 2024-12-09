@@ -1,9 +1,9 @@
-<svg width="585" height="411" viewBox="0 0 585 411" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="585" height="384" viewBox="0 0 585 384" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_355_58)">
-<path d="M69.612 5.5083C63.9898 19.1369 36.0672 22.1594 24.9682 33.2002C13.3102 44.7971 9.88798 56.3307 10.0028 69.1381C10.1469 85.2187 11.4681 100.01 23.8863 115.116C51.4457 148.641 -6.59589 185.027 24.9682 217.558C44.3653 237.548 57.4157 259.141 55.476 281.64C53.7662 301.472 54.624 335.471 94 361.142C115.477 375.144 159.949 389.872 188.939 394.863C238.203 403.344 272.05 383.841 323.661 383.944C385.088 384.066 439.706 379.891 487.696 361.142C527.257 345.686 531.322 329.789 574.948 318.388" stroke="#FC817E" stroke-width="5" stroke-linecap="round"/>
+<path d="M24.9682 6.2002C13.3102 17.7971 9.88798 29.3307 10.0028 42.1381C10.1469 58.2187 11.4681 73.0095 23.8863 88.1161C51.4457 121.641 -6.59589 158.027 24.9682 190.557C44.3653 210.548 57.4157 232.141 55.476 254.64C53.7662 274.472 54.624 308.471 94 334.142C115.477 348.144 159.949 362.872 188.939 367.863C238.203 376.344 272.05 356.841 323.661 356.944C385.088 357.066 439.706 352.89 487.696 334.142C527.257 318.686 531.322 302.789 574.948 291.388" stroke="#FC817E" stroke-width="5" stroke-linecap="round"/>
 </g>
 <defs>
-<filter id="filter0_d_355_58" x="0.5" y="0.0078125" width="583.949" height="410.492" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_355_58" x="0.5" y="0.700195" width="583.949" height="382.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>

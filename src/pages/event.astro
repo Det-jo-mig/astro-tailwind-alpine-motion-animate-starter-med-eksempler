@@ -1,0 +1,51 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<MainLayout>
+    <h2 class="mx-5 text-xl text-black font-bold">Event titel</h2>
+    <div class="grid grid-cols-1 text-left">
+      <template>
+        <article
+          class="calendar grid grid-cols-3 justify-items-center text-left bg-brown/50 my-5 mx-2 p-2 overflow-hidden"
+        >
+            <img class="h-28 w-28 my-5 ol-span-1 row-span-3" src="" alt="" />
+          <h4 class="ml-2 text-xs font-semibold col-start-2 col-span-2">location</h4>
+          <p
+            class="ml-2 text-sm overflow-hidden text-ellipsis col-start-2 col-span-2 h-20"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
+            recusandae explicabo fugit nemo quaerat optio pariatur ullam iure
+            nobis.
+          </p>
+          <p class="ml-2 date text-sm font-semibold col-start-2"></p>
+          <p class="time text-sm font-semibold col-start-3"></p>
+        </article>
+      </template>
+    </div>
+  </MainLayout>
+
+<!-- https://bfzdiuwmmagsqlmwmuix.supabase.co 
+ APIkey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmemRpdXdtbWFnc3FsbXdtdWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNzEzNzQsImV4cCI6MjA0ODc0NzM3NH0.gtj_8Shvijp7fYyuWNk9sueJ6L-mDitdCK5xcOCSd-0 
+ -->
+ <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const query = urlParams.get("design_focus");
+    fetch(
+      `https://bfzdiuwmmagsqlmwmuix.supabase.co/rest/v1/calendar?design_focus=eq.["${query}"]`,
+      {
+        headers: {
+          apikey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmemRpdXdtbWFnc3FsbXdtdWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNzEzNzQsImV4cCI6MjA0ODc0NzM3NH0.gtj_8Shvijp7fYyuWNk9sueJ6L-mDitdCK5xcOCSd-0",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then(showDatas);
+      
+      function showDatas(data) {
+        console.log(data);
+        const singleProduct = data[0]
+        document.querySelector("h2").textContent = singleProduct.calendar.design_focus
+  }
+  
+  </script>

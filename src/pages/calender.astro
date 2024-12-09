@@ -9,22 +9,25 @@ import Button from "../components/Button.astro";
     Our Design Calendar is your one-stop guide to all the activities and events
     happening in the field of design and design-related topics in Denmark.
   </p>
+  <ul>
+    <li> <a href="/event?design_focus=graphic">Graphic design</a></li>
+  </ul>
   <div class="grid grid-cols-1 text-left">
     <template>
       <article
         class="calendar grid grid-cols-3 justify-items-center text-left bg-brown/50 my-5 mx-2 p-2 overflow-hidden"
       >
           <img class="h-28 w-28 my-5 ol-span-1 row-span-3" src="" alt="" />
-        <h3 class="text-base font-bold col-start-2 col-span-2 truncate">titel</h3>
-        <h4 class="text-sm font-semibold col-start-2 col-span-2">location</h4>
+        <h3 class="ml-2 text-base font-bold col-start-2 col-span-2 w-60 truncate">titel</h3>
+        <h4 class="ml-2 text-xs font-semibold col-start-2 col-span-2">location</h4>
         <p
-          class="text-sm overflow-hidden text-ellipsis col-start-2 col-span-2 h-20"
+          class="ml-2 text-sm overflow-hidden text-ellipsis col-start-2 col-span-2 h-20"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
           recusandae explicabo fugit nemo quaerat optio pariatur ullam iure
           nobis.
         </p>
-        <p class="date text-sm font-semibold col-start-2"></p>
+        <p class="ml-2 date text-sm font-semibold col-start-2"></p>
         <p class="time text-sm font-semibold col-start-3"></p>
       </article>
     </template>
