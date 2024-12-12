@@ -1,5 +1,38 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from "../components/Button.astro";
+const news = await Astro.glob("./news/*.md");
+const sorteredenews = news.sort((a, b) => Date.parse(b.frontmatter.dato) - Date.parse(a.frontmatter.dato));
+const udvalgtenews = sorteredenews.slice(0, 6);
 ---
-
+<MainLayout>
+<h2 class="mx-5 text-xl font-semibold pt-10"><a href="/news">News</a></h2>
+	<section class="mx-5 mb-16 pt-10 relative">
+		<ul id="wrapper" class="flex flex-col gap-5">
+		  {
+			udvalgtenews.map((post) => (
+			  <li id="slide" class="max-w-sm snap-center">
+				<div class="flex flex-row text-center bg-brown/50 pr-2">
+					<img src={post.frontmatter.coverimage} alt={post.frontmatter.coveralt} class="h-28 w-28 my-5"/>
+				  <div class="text-left overflow-hidden relative">
+					<h3 class="text-base font-bold ml-2 w-58 truncate">
+					  <a class href={post.url} class="">
+						{post.frontmatter.title}
+					  </a>
+					</h3>
+					<span class="text-sm font-semibold ml-2">{post.frontmatter.dato}</span>
+					<p class="text-sm ml-2 h-16 w-58 overflow-hidden text-ellipsis"> {post.frontmatter.kortversion}</p>
+					<a href={post.url} class="">
+					  <div class="right-0 absolute">
+						{" "}
+						<Button>LÆS MERE</Button>
+					  </div>
+					</a>
+				  </div>
+				</div>
+			  </li>
+			))
+		  }
+		</ul>
+	</section>
+</MainLayout>

@@ -42,10 +42,32 @@ import MainLayout from "../layouts/MainLayout.astro";
       .then((res) => res.json())
       .then(showDatas);
       
-      function showDatas(data) {
-        console.log(data);
-        const singleProduct = data[0]
-        document.querySelector("h2").textContent = singleProduct.calendar.design_focus
+      function showDatas(calendars) {
+    calendars.forEach((element) => {
+        const link = document.createElement("a");
+        link.href = `/event?id${element.id}`;
+        link.textContent = element.name
+        document.body.appendChild(link)
+    });
   }
   
   </script>
+<!-- 
+fetch(
+`https://bfzdiuwmmagsqlmwmuix.supabase.co/rest/v1/calendar?id=eq.["${query}"]`,
+{
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmemRpdXdtbWFnc3FsbXdtdWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNzEzNzQsImV4cCI6MjA0ODc0NzM3NH0.gtj_8Shvijp7fYyuWNk9sueJ6L-mDitdCK5xcOCSd-0",
+  },
+}
+)
+.then((res) => res.json())
+.then(showDatas);
+
+function showDatas(data) {
+  console.log(data);
+  const singleProduct = data[0]
+  document.querySelector("h2").textContent=singleProduct.design_focus
+}
+ -->

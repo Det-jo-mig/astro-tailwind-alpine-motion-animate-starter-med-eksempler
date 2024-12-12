@@ -3,23 +3,26 @@ import Button from '../components/Button.astro';
 
 ---
 <div class="grid grid-cols-3 mx-5">
-<img src="/logo.webp" alt="" class="w-20 h-20 col-span-1">
-<div class="col-span-2 p-5">
-    <input placeholder="First name" type="text" id="name" class="my-3 w-36 h-6"><br>
-    <input placeholder="Last name" type="text" id="adress" class="mb-3 w-36 h-6"><br>
-    <input placeholder="mail@gmail.com" type="text" id="mail" class="mb-3 w-36 h-6"><br>
+    <div>
+<img src="/logo.webp" alt="" class="w-20 h-20 col-span-1 lg:w-36 lg:h-36">
+<p class="text-white w-20 text-xs col-span-1 lg:text-sm lg:w-52">Email:
+    info@designdenmark.dk <br>
+    Physical Mail:
+    Vesterbrogade 208, 1800 Frederiksberg C.</p>
+</div>
+<div class="col-span-2 p-5 lg:col-start-3">
+    <h2 class="text-white text-xs col-span-1 lg:text-base">Sign up to our newsletter: Design drop </h2>
+    <input placeholder="First name" type="text" id="name" class="my-3 w-36 h-6 lg:w-64"><br>
+    <input placeholder="Last name" type="text" id="adress" class="mb-3 w-36 h-6 lg:w-64"><br>
+    <input placeholder="mail@gmail.com" type="text" id="mail" class="mb-3 w-36 h-6 lg:w-64"><br>
     <div>
         <input type="checkbox" id="nyheder" />
         <label for="nyheder" class="text-white">Ja tak til nyhedsbrev og tilbud</label><br />
     </div>
     <div>
-        <Button type="submit">Til betaling</Button>
+        <Button type="submit">tilmed nyhedsbrev</Button>
     </div>
 </div>
-<p class="text-white w-20 text-xs col-span-1 ">Email:
-    info@designdenmark.dk <br>
-    Physical Mail:
-    Vesterbrogade 208, 1800 Frederiksberg C.</p>
 </div>
 <p class="text-center text-white">&copy; Design denmark</p>
   

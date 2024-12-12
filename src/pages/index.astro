@@ -1,63 +1,224 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Button from '../components/Button.astro';
+import Button from "../components/Button.astro";
 const news = await Astro.glob("./news/*.md");
-const sorteredenews = news.sort((a, b) => Date.parse(b.frontmatter.dato) - Date.parse(a.frontmatter.dato));
+const sorteredenews = news.sort(
+  (a, b) => Date.parse(b.frontmatter.dato) - Date.parse(a.frontmatter.dato)
+);
 const udvalgtenews = sorteredenews.slice(0, 6);
-
 ---
+
 <MainLayout title="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">
-	<article class="bg-[url('/public/bg.gif')] bg-center h-screen relative" x-data>
-		<div class="mx-5 pt-5">
-		<h1 class="text-4xl text-white font-black"> Design denmark</h1>
-		<h2 class="text-xl text-white font-semibold">The Association of Design Professionals since 1946</h2>
-		<p class="text-base font-semibold text-white absolute bottom-20">We build tools, shape new knowledge and foster relations between designers and the rest of the world. </p>
-		</div>
-	</article>
-	<article class="mx-5 ">
-		<h2 class="text-xl font-semibold pt-10 pb-5"><a href="/aboutus">What is Design denmark?</a></h2>
-		<div class="bg-[url('/public/txtboxtop.svg')] bg-contain bg-no-repeat pt-10 relative">
-			<p class="text-sm px-7 ">Design denmark is a non-profit organization utilizing all our  resources to improve the conditions for designers in Denmark and helping to create Danish design impact worldwide.
-				We consider ourselves both your sparring partner for projects and ideas and your megaphone helping to make your voice heard. 
-				Design denmark utilize all our  resources to improve the conditions for designers in Denmark and helping to create Danish design impact worldwide. 
-				We showcase the craft, stories and products of our members because we believe that Danish design has an important role to play – leading the way to new, sustainable, ethical futures. 
-			</p>
-			<div class="bg-[url('/public/txtboxbottom.svg')] bg-contain bg-no-repeat w-full h-2/4 absolute -bottom-10">
-		</div>
-		</div>
-	</article>
-	<h2 class="mx-5 text-xl font-semibold pt-10"><a href="/news">News</a></h2>
-	<section class="mx-5 mb-16 pt-10 relative">
-		<ul id="wrapper" class="flex flex-col h-72 overflow-auto gap-5">
-		  {
-			udvalgtenews.map((post) => (
-			  <li id="slide" class="max-w-sm snap-center">
-				<div class="flex flex-row text-center bg-brown/50 pr-2 h-40">
-					<img src={post.frontmatter.coverimage} alt={post.frontmatter.coveralt} class="h-28 w-28 my-5"/>
-				  <div class="text-left overflow-hidden relative">
-					<h3 class="text-base font-bold ml-2 w-58 truncate">
-					  <a class href={post.url} class="">
-						{post.frontmatter.title}
-					  </a>
-					</h3>
-					<span class="text-sm font-semibold ml-2">{post.frontmatter.dato}</span>
-					<p class="text-sm ml-2 h-16 w-58 overflow-hidden text-ellipsis"> {post.frontmatter.kortversion}</p>
-					<a href={post.url} class="">
-					  <div class="right-0 absolute">
-						{" "}
-						<Button>LÆS MERE</Button>
-					  </div>
-					</a>
-				  </div>
-				</div>
-			  </li>
-			))
-		  }
-		</ul>
-	</section>
-<!-- 	News
+  <article
+    class="bg-[url('/public/bg.gif')] bg-no-repeat lg:bg-cover bg-center h-screen relative"
+    x-data
+  >
+    <div class="bg-brown/60 h-screen">
+      <h1 class="lg:text-7xl mx-5 pt-5 text-4xl text-white font-black">Design denmark</h1>
+      <h2 class="lg:text-3xl mx-5 pt-5 text-xl text-white font-semibold">
+        The Association of Design Professionals since 1946
+      </h2>
+      <p
+        class="lg:font-extrabold lg:text-xl mx-5 pt-5 text-base font-bold text-white absolute bottom-20"
+      >
+        We build tools, shape new knowledge and foster relations between
+        designers and the rest of the world.
+      </p>
+    </div>
+  </article>
+  <div class="lg:grid grid-cols-2">
+    <article class="mx-5 col-span-2">
+      <h2 class="lg:text-3xl text-xl font-semibold pt-10 pb-5">
+        <a href="/aboutus">What is Design denmark?</a>
+      </h2>
+      <div
+        class="bg-[url('/public/txtboxtop.svg')] bg-contain bg-no-repeat pt-10 relative lg:bg-right"
+      >
+        <p class="text-sm px-10 lg:px-5">
+          Design denmark is a non-profit organization utilizing all our
+          resources to improve the conditions for designers in Denmark and
+          helping to create Danish design impact worldwide. We consider
+          ourselves both your sparring partner for projects and ideas and your
+          megaphone helping to make your voice heard.  Design denmark utilize
+          all our resources to improve the conditions for designers in Denmark
+          and helping to create Danish design impact worldwide.  We showcase the
+          craft, stories and products of our members because we believe that
+          Danish design has an important role to play – leading the way to new,
+          sustainable, ethical futures.
+        </p>
+        <div
+          class="bg-[url('/public/txtboxbottom.svg')] bg-contain bg-no-repeat w-full h-2/5 absolute -bottom-10 lg:h-4/5 lg:-bottom-6"
+        >
+        </div>
+        <div class="right-0 absolute lg:hidden">
+			<Button size="small"><a href="/membership">Become a member</a></Button>
+		  </div>
+		  <div class="right-0 absolute lg:block">
+			<Button size="large"><a href="/membership">Become a member</a></Button>
+		  </div>
+      </div>
+    </article>
+    <div class="mx-5">
+      <h2 class="lg:text-3xl mx-5 text-xl font-semibold pt-10">
+        <a href="/calendar">Calendar</a>
+      </h2>
+      <article class="h-80 overflow-auto gap-5 mb-16">
+        <div class="grid grid-cols-1 text-left">
+          <template>
+            <article
+              class="calendar grid grid-cols-3 text-left bg-brown/50 my-5 overflow-hidden"
+            >
+              <img class="h-28 w-28 my-5 ol-span-1 row-span-3" src="" alt="" />
+              <h3
+                class="ml-2 text-base font-bold col-start-2 col-span-2 w-60 truncate"
+              >
+                titel
+              </h3>
+              <h4 class="ml-2 text-xs font-semibold col-start-2 col-span-2">
+                location
+              </h4>
+              <p
+                class="ml-2 text-sm overflow-hidden text-ellipsis col-start-2 col-span-2 h-20"
+              >
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+                quidem recusandae explicabo fugit nemo quaerat optio pariatur
+                ullam iure nobis.
+              </p>
+              <p class="ml-2 date text-sm font-semibold col-start-2"></p>
+              <p class="time text-sm font-semibold col-start-3"></p>
+            </article>
+          </template>
+        </div>
+      </article>
+    </div>
+    <div class="row-start-3 col-span-2">
+      <h2 class="lg:text-3xl mx-5 text-xl font-semibold pt-10">
+        <a href="/services">What do we offer?</a>
+      </h2>
+
+      <article class="mx-5">
+        <div
+          class="bg-[url('/public/txtboxtop.svg')] bg-contain bg-no-repeat pt-10 relative lg:bg-right"
+        >
+          <p class="text-sm pr-5 pl-10">
+            Did you know that as a member of design denmark you can:
+
+            <br />– Become part of an active and professional design community.
+
+            <br />– Can have cases exposed on various platforms, such as
+            newsletters, social media and the Design Denmark website.
+
+            <br />– Can become part of the Design Denmark board and have a say.
+
+            <br />– Can use the association as a sparring partner for projects,
+            initiatives and activities.
+
+            <br />– Can participate in member events for free – either on stage
+            or in the hall.
+
+            <br />– Help support and promote the Danish Design Award initiated
+            by Design denmark and the Danish Design Center.
+
+            <br />– Have free listings in Design denmark’s Job Exchange for
+            vacancies in the design industry.
+
+            <br />– Contributes to supporting design conditions in relation to
+            rights and copies.
+            <br />All you can gain full access to as a member via your member
+            page.
+          </p>
+          <div
+            class="bg-[url('/public/txtboxbottom.svg')] bg-contain bg-no-repeat w-full h-2/5 absolute -bottom-10 lg:-bottom-6"
+          >
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="mx-5">
+      <h2 class="lg:text-3xl mx-5 text-xl font-semibold pt-10"><a href="/news">News</a></h2>
+      <articale class="mx-5 mb-16 pt-10 relative">
+        <ul id="wrapper" class="flex flex-col h-72 overflow-auto gap-5">
+          {
+            udvalgtenews.map((post) => (
+              <li id="slide" class=" snap-center">
+                <div class="flex flex-row text-center bg-brown/50 pr-2 h-40">
+                  <img
+                    src={post.frontmatter.coverimage}
+                    alt={post.frontmatter.coveralt}
+                    class="h-28 w-28 my-5"
+                  />
+                  <div class="text-left overflow-hidden relative">
+                    <h3 class="text-base font-bold ml-2 w-58 truncate">
+                      <a class href={post.url} class="">
+                        {post.frontmatter.title}
+                      </a>
+                    </h3>
+                    <span class="text-sm font-semibold ml-2">
+                      {post.frontmatter.dato}
+                    </span>
+                    <p class="text-sm ml-2 h-16 w-58 overflow-hidden text-ellipsis">
+                      {" "}
+                      {post.frontmatter.kortversion}
+                    </p>
+                    <a href={post.url} class="">
+                      <div class="right-0 absolute lg:hidden">
+                        {" "}
+                        <Button size="small">LÆS MERE</Button>
+                      </div>
+                    </a>{" "}
+                    <a href={post.url} class="">
+                      <div class="right-0 absolute hidden lg:block">
+                        {" "}
+                        <Button size="medium">LÆS MERE</Button>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </articale>
+    </div>
+  </div>
+  <!-- 	News
 
 	calender
 
 	services -->
 </MainLayout>
+
+<script>
+  fetch(
+    "https://bfzdiuwmmagsqlmwmuix.supabase.co/rest/v1/calendar?order=date.asc",
+    {
+      method: "GET",
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmemRpdXdtbWFnc3FsbXdtdWl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMxNzEzNzQsImV4cCI6MjA0ODc0NzM3NH0.gtj_8Shvijp7fYyuWNk9sueJ6L-mDitdCK5xcOCSd-0",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then(showDatas);
+
+  function showDatas(calendars) {
+    calendars.forEach(showData);
+  }
+  function showData(calendar) {
+    const template = document.querySelector("template").content;
+    const copy = template.cloneNode(true);
+
+    copy.querySelector("h3").textContent = calendar.titel;
+    copy.querySelector("h4").textContent = calendar.location;
+    copy.querySelector("p").textContent = calendar.description;
+    copy.querySelector("img").src = calendar.image;
+    copy.querySelector(".date").textContent = calendar.date;
+    copy.querySelector(".time").textContent = calendar.time;
+    if (calendar.free) {
+      copy.querySelector("article").classList.add("freeEvent");
+    }
+    const parent = document.querySelector(".grid");
+    parent.appendChild(copy);
+  }
+</script>
