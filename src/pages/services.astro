@@ -1,0 +1,64 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Button from "../components/Button.astro";
+---
+
+<MainLayout>
+  <div class="pt-10" x-data="{ open: false }">
+    <section class="mx-16 p-10 relative bg-brown/50">
+        <div
+        class="flex flex-row justify-items-center text-center mt-2"
+        >
+        <div class="text-left overflow-hidden text-ellipsis">
+            <h2>Legal help</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
+            dicta magni, quaerat ad at unde similique, animi amet saepe porro
+            quo! Distinctio, vero quos!
+          </p>
+          <button class="rounded-lg p-2 drop-shadow-md bg-blue" @click="open = ! open">Read more</button>
+        </div>
+      </div>
+      <div x-show="open">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit vero eius molestiae voluptatum provident impedit facere quibusdam fugiat in ut.
+      </div>
+    </section>
+  </div>
+  <div x-data="{ open: false }">
+    <section class="m-16 p-10 pt-10 relative bg-brown/50">
+        <div
+        class="flex flex-row justify-items-center text-center mt-2"
+        >
+        <div class="text-left overflow-hidden text-ellipsis">
+            <h2>Legal help</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
+            dicta magni, quaerat ad at unde similique, animi amet saepe porro
+            quo! Distinctio, vero quos!
+          </p>
+          <button class="rounded-lg p-2 drop-shadow-md bg-blue" @click="open = ! open">Read more</button>
+        </div>
+      </div>
+      <div x-show="open">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit vero eius molestiae voluptatum provident impedit facere quibusdam fugiat in ut.
+      </div>
+    </section>
+  </div>
+  <div x-data="{ open: false }">
+    <section class="m-16 p-10 pt-10 relative bg-brown/50">
+        <div
+        class="flex flex-row justify-items-center text-center mt-2"
+        >
+        <div class="text-left overflow-hidden text-ellipsis">
+            <h2>Legal help</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
+            dicta magni, quaerat ad at unde similique, animi amet saepe porro
+            quo! Distinctio, vero quos!
+          </p>
+          <button class="rounded-lg p-2 drop-shadow-md bg-blue" @click="open = ! open">Read more</button>
+        </div>
+      </div>
+      <div x-show="open">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit vero eius molestiae voluptatum provident impedit facere quibusdam fugiat in ut.
+      </div>
+    </section>
+  </div>
+</MainLayout>
