@@ -6,13 +6,13 @@ const sorteredenews = news.sort((a, b) => Date.parse(b.frontmatter.dato) - Date.
 const udvalgtenews = sorteredenews.slice(0, 6);
 ---
 <MainLayout>
-<h2 class="mx-5 text-xl font-semibold pt-10"><a href="/news">News</a></h2>
-	<section class="mx-5 mb-16 pt-10 relative">
-		<ul id="wrapper" class="flex flex-col gap-5">
+<h2 class="font-hero py-5 text-xl text-black font-bold mx-16"><a href="/news">News</a></h2>
+	<section class="mx-16 mb-16 pt-10 relative">
+		<ul id="wrapper" class="flex flex-col gap-5 lg:grid grid-cols-2">
 		  {
 			udvalgtenews.map((post) => (
-			  <li id="slide" class="max-w-sm snap-center">
-				<div class="flex flex-row text-center bg-brown/50 pr-2">
+			  <li id="slide" class="lg:max-w-6xl max-w-sm snap-center ">
+				<div class="flex flex-row text-center bg-brown/50 pr-2 ">
 					<img src={post.frontmatter.coverimage} alt={post.frontmatter.coveralt} class="h-28 w-28 my-5"/>
 				  <div class="text-left overflow-hidden relative">
 					<h3 class="text-base font-bold ml-2 w-58 truncate">

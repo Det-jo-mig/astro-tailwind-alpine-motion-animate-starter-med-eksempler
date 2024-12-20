@@ -2,6 +2,10 @@
 module.exports = {
     theme: {
         extend: {
+            fontFamily: {     
+                sans: ['"Roboto"', "monospace"],
+                hero: ['"Raleway"', "monospace",],
+              },
             colors: {
                 'blue': '#2F277E',
                 'red': '#FC817E',

@@ -5,7 +5,7 @@ const {frontmatter} = Astro.props;
 <MainLayout title="Titel">
 	<div class="max-w-5xl mx-auto px-4 lg:mx-20 lg:max-w-7xl lg:justif">	
 		<section class="prose lg:grid lg:grid-cols-2">
-			<h1 class="col-span-2">{frontmatter.title}</h1>
+			<h1 class="font-hero col-span-2">{frontmatter.title}</h1>
 			<img src={frontmatter.singleviewimage} alt={frontmatter.coveralt} class="mb-8"/>
 			<slot />
 		</section>
