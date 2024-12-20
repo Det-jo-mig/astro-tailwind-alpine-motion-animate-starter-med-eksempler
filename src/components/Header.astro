@@ -2,7 +2,7 @@
 import Button from '../components/Button.astro';
 ---
 <div x-data="{ showmenu: false }" class="p-4 fixed lg:w-36 lg:h-screen w-full bg-red z-50">
-    <div id="navbar" class="flex flex-col justify-between ">
+    <div id="navbar" class="flex flex-col justify-between lg:items-center">
     <div id="logo" class="">
     <a href="/" class="">
         <img src="/logo.webp" alt="" class="w-14 right-3 absolute lg:right-0 lg:relative">
@@ -12,7 +12,7 @@ import Button from '../components/Button.astro';
         <span class="bg-white h-2 w-full block"></span>
         <span class="bg-white h-2 w-full block"></span>
         <span class="bg-white h-2 w-full block"></span></button>
-    <nav id="desktopmenu" class="content-center pt-4 hidden lg:block " 
+    <nav id="desktopmenu" class="content-center pt-4 hidden lg:block bg-red" 
     x-show="showmenu" x-transition x-on:click="showmenu = false" x-on:click.outside="showmenu = false">
     <ul class="flex flex-col gap-5 ">
         <li class="py-2 px-10 text-white text-left font-extrabold"><a href="/">Home</a></li>

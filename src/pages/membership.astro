@@ -5,7 +5,7 @@ const member = await Astro.glob("./memberships/*.md");
 
 ---
 <MainLayout title="Astro, Tailwind, Alpine, Motion One og Animate CSS Starter">
-<section>
+<section class="lg:mx-20">
     <h2 class="mx-5 text-xl text-black font-bold">Memberships</h2>
     <p class="mx-5 text-sm">
         As a member of design denmark you get; 
@@ -16,8 +16,8 @@ const member = await Astro.glob("./memberships/*.md");
         <br> Contract templates: As a member you also get access to specialized contract templates designed to suit the needs of the design industry. 
         oin our networks, talks, webinars, and more completely free of charge and get massive discounts on masterclasses, conferences, festivals.
       </p>
-      <section class="mb-16 p-4 pt-10 relative ">
-        <ul id="wrapper" class="flex flex-col gap-5">
+      <section class="mb-16 p-4 pt-10 relative">
+        <ul id="wrapper" class="flex flex-col gap-5 lg:grid grid-cols-2 lg:mx-10">
           {
             member.map((post) => (
               <li id="slide" class="max-w-sm snap-center">

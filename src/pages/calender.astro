@@ -4,21 +4,22 @@ import Button from "../components/Button.astro";
 ---
 
 <MainLayout>
-  <h2 class="mx-5 text-xl text-black font-bold">Calendar</h2>
-  <p class="mx-5 text-base">
+  <div class="lg:mx-20 mx-5">
+  <h2 class="py-5 text-xl text-black font-bold">Calendar</h2>
+  <p class="text-base">
     Our Design Calendar is your one-stop guide to all the activities and events
     happening in the field of design and design-related topics in Denmark.
   </p>
   <div class="grid grid-cols-1 text-left">
     <template>
       <article
-        class="calendar grid grid-cols-3 justify-items-center text-left bg-brown/50 my-5 mx-2 p-2 overflow-hidden"
+        class="calendar grid grid-cols-4 justify-items-center text-left bg-brown/50 my-5 p-2 overflow-hidden"
       >
-          <img class="h-28 w-28 my-5 ol-span-1 row-span-3" src="" alt="" />
-        <h3 class="ml-2 text-base font-bold col-start-2 col-span-2 w-60 truncate">titel</h3>
-        <h4 class="ml-2 text-xs font-semibold col-start-2 col-span-2">location</h4>
+          <img class=" place-self-start row-span-3" src="" alt="" />
+        <h3 class="ml-2 text-base font-bold col-start-2 col-span-3 w-60 truncate place-self-start">titel</h3>
+        <h4 class="ml-2 text-xs font-semibold col-start-2 col-span-3 place-self-start">location</h4>
         <p
-          class="ml-2 text-sm overflow-hidden text-ellipsis col-start-2 col-span-2 h-20"
+          class="ml-2 text-sm overflow-hidden text-ellipsis col-start-2 col-span-3 h-20"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quidem
           recusandae explicabo fugit nemo quaerat optio pariatur ullam iure
@@ -28,6 +29,7 @@ import Button from "../components/Button.astro";
         <p class="time text-sm font-semibold col-start-3"></p>
       </article>
     </template>
+  </div>
   </div>
 </MainLayout>
 <!-- https://bfzdiuwmmagsqlmwmuix.supabase.co 
